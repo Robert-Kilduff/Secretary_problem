@@ -32,17 +32,15 @@ def best_of_two():
     winner = winner.iat[0,1]
     return winner
 
-def look_leap():
+def look_leap(stop):
     lst = list(np.arange(1,101))
     random.shuffle(lst)
-    apps = []
-    for i in range(0, 100):
-        apps.append(ns.get_full_name())
-    df = pd.DataFrame({"Name": apps, "Rank": lst, "Known Rating": [None]*100})
-    df2 = df[["Rank"]].copy()
-    wait_group = df2[0:36]
-    pick_group = df2[36:]
-    found = 0
-    #while found == 0:
-        #TODO
+    wait_group = lst[0:stop]
+    pick_group = lst[stop:]
+    for i in pick_group:
+        if i < min(wait_group) and i <= min(pick_group[0:pick_group.index(i)]):
+            return i
+        else:
+            pass
+    return 100
 
