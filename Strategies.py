@@ -32,11 +32,12 @@ def best_of_two():
     winner = winner.iat[0,1]
     return winner
 
-def look_leap(stop):
-    lst = list(np.arange(1,101))
+def look_leap(stop, list_len):
+    lst = list(np.arange(1,list_len))
     random.shuffle(lst)
-    wait_group = lst[0:stop]
-    pick_group = lst[stop:]
+    stop_nr = (len(lst)/100) * stop
+    wait_group = lst[0:stop_nr]
+    pick_group = lst[stop_nr:]
     for i in pick_group:
         if i < min(wait_group) and i <= min(pick_group[0:pick_group.index(i)]):
             return i
