@@ -3,6 +3,25 @@ import names as ns
 import random
 import pandas as pd
 
+def best_of_x(stop, list_len):
+    #finding the lowest value
+    lst = list(np.arange(0,list_len))
+    random.shuffle(lst)
+    candidate_counter = 0
+    for i in lst:
+        #ignoring the first value as that will always evaluate as the best so far
+        if i <= lst[:lst.index(i)] and i != 1:
+            candidate_counter +=1
+            if candidate_counter == stop:
+                return i
+            else:
+                pass
+        else:
+            pass
+    return 100
+
+
+
 
 def best_of_three():
     lst = list(np.arange(1,101))
@@ -33,9 +52,12 @@ def best_of_two():
     return winner
 
 def look_leap(stop, list_len):
-    lst = list(np.arange(1,list_len))
+    lst = list(np.arange(0,list_len))
     random.shuffle(lst)
-    stop_nr = (len(lst)/100) * stop
+    stop_nr = int((len(lst)/100) * stop)
+    #print(len(lst))
+    #print("stop ", stop)
+    #print(stop_nr)
     wait_group = lst[0:stop_nr]
     pick_group = lst[stop_nr:]
     for i in pick_group:
