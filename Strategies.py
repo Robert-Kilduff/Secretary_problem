@@ -55,9 +55,9 @@ def look_leap(stop, list_len):
     lst = list(np.arange(0,list_len))
     random.shuffle(lst)
     stop_nr = int((len(lst)/100) * stop)
-    #print(len(lst))
-    #print("stop ", stop)
-    #print(stop_nr)
+    print(len(lst))
+    print("stop ", stop)
+    print(stop_nr)
     wait_group = lst[0:stop_nr]
     pick_group = lst[stop_nr:]
     for i in pick_group:
